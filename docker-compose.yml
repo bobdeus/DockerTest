@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+    my-mysql:
+        container_name: my-mysql
+        image: mysql:latest
+        command: --explicit-defaults-for-timestamp=ON
+        environment:
+            MYSQL_ROOT_PASSWORD: docker
+        ports:
+            - '3306:3306'
+        volumes:
+            - mysql_data:/var/lib/mysql
+            - ./sql-files:/docker-entrypoint-initdb.d
+volumes:
+    ? mysql_data
